@@ -81,3 +81,4 @@ function fetchNews(category = "general", searchTerm = null) {
     container.html(`<p class="text-center text-danger">Failed to load news (Proxy/API error)</p>`);
   });
 }
+
