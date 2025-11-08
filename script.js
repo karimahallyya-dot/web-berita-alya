@@ -1,7 +1,7 @@
 $(document).ready(function () {
   const API_KEY = 'c3af6efe9a0f4b0e83240d9a3d448ff1';
   const BASE_URL = 'https://newsapi.org/v2';
-  const PROXY = 'https://api.allorigins.win/raw?url=';
+  const PROXY = 'https://corsproxy.io/?';
   const newsContainer = $('#news-container');
   let currentCategory = 'general';
 
@@ -191,4 +191,5 @@ $(document).ready(function () {
       .replace(/'/g, '&#39;');
   }
 });
+
 
