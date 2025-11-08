@@ -4,22 +4,11 @@ $(document).ready(function () {
   const newsContainer = $('#news-container');
   let currentCategory = 'general';
 
-  // Load navbar dan footer
-  $('#navbar-container').load('navbar.html', function () {
-    const current = location.pathname.split('/').pop();
-    $('.nav-link').each(function () {
-      if ($(this).attr('href') === current) {
-        $(this).addClass('active');
-      }
-    });
-  });
-
+  $('#navbar-container').load('navbar.html');
   $('#footer-container').load('footer.html');
 
-  // Muat berita pertama kali
   fetchNews(currentCategory);
 
-  // Klik kategori berita
   $('.news-category').on('click', function () {
     $('.news-category').removeClass('active');
     $(this).addClass('active');
@@ -27,7 +16,6 @@ $(document).ready(function () {
     fetchNews(currentCategory);
   });
 
-  // Fungsi utama untuk mengambil berita
   function fetchNews(category, searchTerm = '') {
     newsContainer.html(`
       <div class="text-center py-5 text-muted">
@@ -40,8 +28,8 @@ $(document).ready(function () {
       ? `${BASE_URL}/everything?q=${encodeURIComponent(searchTerm)}&sortBy=publishedAt&apiKey=${API_KEY}`
       : `${BASE_URL}/top-headlines?country=us&category=${category}&apiKey=${API_KEY}`;
 
-    // Gunakan proxy agar bisa di-host di Vercel
-    const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(url);
+    // ✅ Pakai proxy agar lolos CORS
+    const proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(url);
 
     $.getJSON(proxyUrl, function (data) {
       if (data.articles && data.articles.length > 0) {
@@ -54,7 +42,8 @@ $(document).ready(function () {
           </div>
         `);
       }
-    }).fail(function () {
+    }).fail(function (err) {
+      console.error('Error:', err);
       newsContainer.html(`
         <div class="text-center text-danger py-5">
           <i class="fas fa-exclamation-triangle fa-2x mb-2"></i>
@@ -64,7 +53,6 @@ $(document).ready(function () {
     });
   }
 
-  // Fungsi menampilkan berita
   function displayNews(articles) {
     newsContainer.empty();
     articles.slice(0, 9).forEach((a) => {
@@ -93,4 +81,3 @@ $(document).ready(function () {
     });
   }
 });
-
