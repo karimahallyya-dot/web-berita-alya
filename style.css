@@ -19,10 +19,10 @@ body {
   padding: 0;
 }
 
-/* Navbar */
+/* Navbar (Tidak ada perubahan) */
 .navbar {
   background: var(--primary);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .navbar .nav-link {
@@ -35,6 +35,8 @@ body {
 .navbar .nav-link.active {
   color: #222 !important;
 }
+
+/* --- SECTIONS (Tidak ada perubahan pada Hero dan Search) --- */
 
 /* Hero section */
 .hero-section {
@@ -86,13 +88,24 @@ body {
   background: var(--secondary);
 }
 
-/* Category buttons */
+/* --- PERBAIKAN TAMPILAN BERITA DIMULAI DI SINI --- */
+
+/* 1. Judul Kategori */
+.category-heading {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-top: 30px; 
+  margin-bottom: 20px; 
+}
+
+/* Category buttons (Memastikan posisi tombol rapi dan terpusat) */
 .categories {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
-  margin: 40px 0 30px;
+  margin: 20px 0 40px; /* Jarak yang lebih baik di bawah kategori */
 }
 
 .category-btn {
@@ -112,16 +125,19 @@ body {
   color: white;
 }
 
-/* News grid layout */
+/* News grid layout (Menetapkan lebar maksimum dan mempusatkan grid) */
 .news-grid {
   display: grid;
+  /* Membuat 3 kolom pada layar lebar, dan menyesuaikan pada layar kecil */
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 25px;
   padding: 0 20px;
-  margin-bottom: 50px;
+  /* Lebar maksimal agar tidak terlalu melebar di monitor besar, dan dipusatkan */
+  max-width: 1200px; 
+  margin: 0 auto 50px auto; /* Pusat horizontal dan jarak di bawah */
 }
 
-/* News card */
+/* News card (Tidak ada perubahan, sudah baik) */
 .news-card {
   background: var(--bg-light);
   border-radius: 15px;
@@ -134,7 +150,7 @@ body {
 
 .news-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 .news-image img {
@@ -143,7 +159,7 @@ body {
   object-fit: cover;
 }
 
-/* News content */
+/* News content (Menggunakan flex untuk menjaga jarak antara judul dan footer) */
 .news-content {
   padding: 18px 20px;
   flex: 1;
@@ -160,26 +176,28 @@ body {
   margin-bottom: 8px;
 }
 
+/* News title (MENGUNCI TINGGI JUDUL agar kartu sejajar) */
 .news-title {
   font-size: 1.1rem;
   font-weight: 600;
   margin: 5px 0 10px;
   color: var(--primary);
   line-height: 1.4;
-  height: 2.8em;
+  height: calc(1.4em * 2); /* Mengunci tinggi untuk 2 baris */
   overflow: hidden;
 }
 
+/* News description (MENGUNCI TINGGI DESKRIPSI agar kartu sejajar) */
 .news-desc {
   color: var(--text-light);
   font-size: 0.95rem;
   line-height: 1.5;
   margin-bottom: 15px;
-  height: 4.5em;
+  height: calc(1.5em * 3); /* Mengunci tinggi untuk 3 baris */
   overflow: hidden;
 }
 
-/* Read more button */
+/* Read more button (Tidak ada perubahan) */
 .news-link {
   align-self: flex-start;
   background: var(--primary);
@@ -190,6 +208,7 @@ body {
   transition: all 0.3s;
   font-size: 0.9rem;
   font-weight: 500;
+  margin-top: auto; /* Memastikan tombol ada di bawah konten */
 }
 
 .news-link:hover {
@@ -197,7 +216,7 @@ body {
   transform: translateX(5px);
 }
 
-/* Footer */
+/* Footer (Tidak ada perubahan) */
 footer {
   background: var(--primary);
   color: #fff;
