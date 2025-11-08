@@ -1,4 +1,4 @@
-const apiKey = "ce35ce93c19f45689d2fea0c01902bb1";
+const apiKey = "c3af6efe9a0f4b0e83240d9a3d448ff1";
 
 $(document).ready(function() {
   // Load navbar & footer
@@ -59,3 +59,4 @@ function loadNews(category = "general") {
     container.html("<p class='text-center text-danger'>Failed to load news.</p>");
   });
 }
+
