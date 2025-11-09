@@ -82,3 +82,4 @@ function fetchNews(category = "general", searchTerm = null) {
   });
 }
 
+
